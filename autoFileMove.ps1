@@ -5,11 +5,11 @@
 ###############################################################################
 
 
-$sourceDir = "C:\sourceDir\"
-$targetDir = "C:\targetDir\"
-$fileTypesToTransfer = @("*.doc", "*.xls", "*.ppt", "*.pdf", "*.docx", "*.xlsx", "*.pptx")
+#$sourceDir = "C:\sourceDir\"
+#$targetDir = "C:\targetDir\"
+#$fileTypesToTransfer = @("*.doc", "*.xls", "*.ppt", "*.pdf", "*.docx", "*.xlsx", "*.pptx")
 
-gci -Path $sourceDir -Include $fileTypesToTransfer -Recurse | mi -Destination $targetDir
+#gci -Path $sourceDir -Include $fileTypesToTransfer -Recurse | mi -Destination $targetDir
 
 #Get-ChildItem -Path $sourceDir -Filter *.doc -Recurse | Move-Item -Destination $targetDir
 #Get-ChildItem -Path $sourceDir -Filter *.xls -Recurse | Move-Item -Destination $targetDir
@@ -21,7 +21,23 @@ gci -Path $sourceDir -Include $fileTypesToTransfer -Recurse | mi -Destination $t
 #Get-ChildItem -Path $sourceDir -Filter *.xlsx -Recurse | Move-Item -Destination $targetDir
 #Get-ChildItem -Path $sourceDir -Filter *.pptx -Recurse | Move-Item -Destination $targetDir
 
+$sourceDir = "d:test\"
+$targetDir = "d:\organised\"
+$fileTypesToTransfer = @("*.doc", "*.xls", "*.ppt", "*.pdf", "*.docx", "*.xlsx", "*.pptx")
 
-
+Try
+{
+gci -Path $sourceDir -Include $fileTypesToTransfer -Recurse | mi -Destination $targetDir -ErrorAction Stop
+}
+Catch 
+{
+$ErrorMessage = $_.Exception.Message
+break
+}
+Finally
+{
+$time=Get-Date
+"$time | Exception: $ErrorMessage" | Out-File d:\organised\history.txt -Append
+}
 
 Exit

@@ -9,7 +9,7 @@ $sourceDir = "C:\sourceDir\"
 $targetDir = "C:\targetDir\"
 $fileTypesToTransfer = @("*.doc", "*.xls", "*.ppt", "*.pdf", "*.docx", "*.xlsx", "*.pptx")
 
-gci -Path $sourceDir -Filter $fileTypesToTransfer -Recurse | mi -Destination $targetDir
+gci -Path $sourceDir -Include $fileTypesToTransfer -Recurse | mi -Destination $targetDir
 
 #Get-ChildItem -Path $sourceDir -Filter *.doc -Recurse | Move-Item -Destination $targetDir
 #Get-ChildItem -Path $sourceDir -Filter *.xls -Recurse | Move-Item -Destination $targetDir

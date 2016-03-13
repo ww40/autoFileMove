@@ -21,7 +21,7 @@
 #Get-ChildItem -Path $sourceDir -Filter *.xlsx -Recurse | Move-Item -Destination $targetDir
 #Get-ChildItem -Path $sourceDir -Filter *.pptx -Recurse | Move-Item -Destination $targetDir
 
-$sourceDir = "d:test\"
+$sourceDir = "d:\test\"
 $targetDir = "d:\organised\"
 $fileTypesToTransfer = @("*.doc", "*.xls", "*.ppt", "*.pdf", "*.docx", "*.xlsx", "*.pptx")
 
